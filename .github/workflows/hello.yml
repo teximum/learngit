@@ -1,0 +1,16 @@
+name: Hello Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a message
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Print the branch name
+        run: echo "This pipeline ran on branch ${{ github.ref_name }}"
