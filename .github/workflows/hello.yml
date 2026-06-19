@@ -9,8 +9,14 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Print a message
         run: echo "Hello from GitHub Actions!"
 
       - name: Print the branch name
         run: echo "This pipeline ran on branch ${{ github.ref_name }}"
+
+      - name: List files in the repo
+        run: ls -la
