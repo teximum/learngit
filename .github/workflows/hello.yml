@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   say-hello:
@@ -20,3 +23,26 @@ jobs:
 
       - name: List files in the repo
         run: ls -la
+
+  check-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.0"
+
+      - name: Check Terraform version
+        run: terraform version
+
+      - name: Check available tools
+        run: |
+          echo "=== System Info ==="
+          uname -a
+          echo "=== Git version ==="
+          git --version
+          echo "=== Terraform version ==="
+          terraform version
