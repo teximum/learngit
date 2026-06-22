@@ -18,8 +18,12 @@ jobs:
       - name: Simulate terraform plan
         run: |
           echo "Running terraform plan..."
-          echo "Triggered by: ${{ github.event_name }}"
           echo "Plan complete - 3 resources to add, 0 to change, 0 to destroy"
+
+      - name: Simulate a plan failure
+        run: |
+          echo "Error: failed to read provider configuration"
+          exit 1
 
   apply:
     runs-on: ubuntu-latest
