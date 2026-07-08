@@ -8,4 +8,4 @@ crash.log
 
 # Sensitive / local-only
 *.tfvars
-federated-credential.json
+federated-credential*.json
